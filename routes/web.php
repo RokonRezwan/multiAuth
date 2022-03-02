@@ -22,18 +22,28 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard'); */
 
-//auth route for both 
+//auth route for all
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-// for users
-Route::group(['middleware' => ['auth', 'role:user']], function() { 
+// for Admin
+Route::group(['middleware' => ['auth', 'role:admin']], function() { 
     Route::get('/dashboard/myprofile',  [DashboardController::class, 'myprofile'])->name('dashboard.myprofile');
 });
 
-// for blogwriters
-Route::group(['middleware' => ['auth', 'role:blogwriter']], function() { 
+// for Employe
+Route::group(['middleware' => ['auth', 'role:employee']], function() { 
+    Route::get('/dashboard/postcreate',  [DashboardController::class, 'postcreate'])->name('dashboard.postcreate');
+});
+
+// for Teacher
+Route::group(['middleware' => ['auth', 'role:teacher']], function() { 
+    Route::get('/dashboard/myprofile',  [DashboardController::class, 'myprofile'])->name('dashboard.myprofile');
+});
+
+// for Student
+Route::group(['middleware' => ['auth', 'role:student']], function() { 
     Route::get('/dashboard/postcreate',  [DashboardController::class, 'postcreate'])->name('dashboard.postcreate');
 });
 

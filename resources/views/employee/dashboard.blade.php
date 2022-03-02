@@ -1,7 +1,7 @@
 <x-app-layout>
       <x-slot name="header">
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              {{ __('Dashboard For New Blog Post') }}
+              {{ __('Dashboard For Employe') }}
           </h2>
       </x-slot>
   
@@ -10,10 +10,7 @@
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                   <div class="p-6 bg-white border-b border-gray-200">
                       You're logged in!
-                      <h1>Blogwriter</h1>
-                      <br>
-                      create your new blog post here!!!!
-                      
+                      <h1>Employe</h1>
                   </div>
               </div>
           </div>
