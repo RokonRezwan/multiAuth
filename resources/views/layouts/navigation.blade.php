@@ -17,10 +17,10 @@
                     </x-nav-link>
                 </div>
 
-                @if (Auth::user()->hasRole('user'))
+                @if (Auth::user()->hasRole('admin'))
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
+                    <x-nav-link :href="route('dashboard.profile')" :active="request()->routeIs('dashboard.profile')">
                         {{ __('My Profile') }}
                     </x-nav-link>
                 </div>

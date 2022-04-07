@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,43 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->hasRole('admin')){
-            return view('admin.dashboard');
-        }
-        elseif(Auth::user()->hasRole('employee')){
-            return view('employee.dashboard');
-        }
-        elseif(Auth::user()->hasRole('teacher')){
-            return view('teacher.dashboard');
-        }
-        elseif(Auth::user()->hasRole('student')){
-            return view('student.dashboard');
-        }
-    }
-
-    public function profile()
-    {
-        
-        if(Auth::user()->hasRole('admin')){
-            return view('admin.profile');
-        }
-        elseif(Auth::user()->hasRole('employee')){
-            return view('employee.profile');
-        }
-        elseif(Auth::user()->hasRole('teacher')){
-            return view('teacher.profile');
-        }
-        elseif(Auth::user()->hasRole('student')){
-            return view('student.profile');
-        }
-        
-    }
-
-    public function postcreate()
-    {
-        
-        return view('postcreate');
-        
+        //
     }
 
     /**

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,13 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard'); */
 
+//for inxeding
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
+Route::get('/teachers', [TeacherController::class, 'index'])->name('teacher.index');
+Route::get('/students', [StudentController::class, 'index'])->name('student.index');
+
+
+
 //auth route for all
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -29,7 +39,11 @@ Route::group(['middleware' => ['auth']], function() {
 
 // for Admin
 Route::group(['middleware' => ['auth', 'role:admin']], function() { 
-    Route::get('/dashboard/myprofile',  [DashboardController::class, 'myprofile'])->name('dashboard.myprofile');
+    Route::get('/dashboard/profile',  [DashboardController::class, 'profile'])->name('dashboard.profile');
+    //for inxeding
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::get('/teachers', [TeacherController::class, 'index'])->name('teacher.index');
+    Route::get('/students', [StudentController::class, 'index'])->name('student.index');
 });
 
 // for Employe
